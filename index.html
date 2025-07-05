@@ -1,0 +1,28 @@
+</ul><!DOCTYPE html>
+<html>
+<head>
+    <title>Taskoid</title>
+</head>
+<body>
+    <h1>Taskoid - Your Tasks</h1>
+
+    <!-- Task List -->
+	<ul>
+    {% for t in tasks %}
+		<li>
+        <strong>{{ t["Task.no."] }}</strong>: {{ t["Task"] }} - <em>{{ t["Status"] }}</em>
+			<form action="/delete-task/{{ t['Task.no.'] }}" method="POST" style="display:inline;">
+				<button type="submit">Delete</button>
+			</form>
+		</li>
+		{% endfor %}
+	</ul>
+    <!-- Add Task Form -->
+    <h2>Add New Task</h2>
+    <form method="POST" action="/add-task">
+        Task: <input type="text" name="Task"><br>
+        Status: <input type="text" name="Status"><br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
